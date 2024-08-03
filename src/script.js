@@ -12,16 +12,37 @@ scene.add(mesh);
 // - field of view; vertical vision angle(?); in degrees;
 // - aspect ratio
 // the width of the renderer divided by the height of the renderer
-const camera = new THREE.PerspectiveCamera(75, 800/600);
-camera.position.z = 3;
-camera.position.x = 2;
-scene.add(camera);
+const camera = new THREE.PerspectiveCamera(75, 800 / 600);
+// camera.position.y = 3;
+camera.position.set(1, 1, 3);
+// camera.position.x = 2;
+// scene.add(camera);
+
+const axesHelper = new THREE.AxesHelper(2);
+scene.add(axesHelper);
 
 // renderer
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector('.webgl')
+  canvas: document.querySelector('.webgl'),
 });
 
 renderer.setSize(800, 600);
 
 renderer.render(scene, camera);
+
+// const clock = new TREE.clock();
+
+const tick = () => {
+  mesh.rotation.y += 0.01;
+  renderer.render(
+    scene,
+
+    camera,
+  );
+
+  requestAnimationFrame(tick);
+};
+
+// tick();
+
+// Note: Group class
