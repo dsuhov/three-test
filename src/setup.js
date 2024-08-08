@@ -27,6 +27,7 @@ scene.add(axesHelper);
 // renderer
 export const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('.webgl'),
+  alpha: true,
 });
 
 renderer.setSize(sizes.width, sizes.height);
