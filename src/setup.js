@@ -21,6 +21,8 @@ export const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height);
 camera.position.set(3, 3, 3);
 
+scene.add(camera);
+
 const axesHelper = new THREE.AxesHelper(2);
 scene.add(axesHelper);
 
@@ -32,11 +34,14 @@ export const renderer = new THREE.WebGLRenderer({
 
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(window.devicePixelRatio);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 export const controls = new OrbitControls(camera, renderer.domElement);
 
 export const run = () => {
   // controls.update();
+  // camera.lookAt(1, 2, 1);
 
   renderer.render(scene, camera);
 
